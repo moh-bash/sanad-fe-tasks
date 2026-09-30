@@ -3,4 +3,4 @@
 
 |Folder | Description | Status |
 |-------|-------------|--------|
-| level-1| Basics javascript concepts, variables, operators | ✅ |
+| level-1-basics | Basics javascript concepts, variables, operators | ✅ completed |
