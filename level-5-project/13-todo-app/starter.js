@@ -43,7 +43,10 @@ function render() {
     // TODO 2: if the todo is done:
     //         - tick the checkbox:  checkbox.checked = ...
     //         - add the class "done" to the li
-
+    checkbox.checked = todo.done;
+    if (todo.done) {
+      li.classList.add("done");
+    }
 
     li.append(checkbox, span, del);
     list.append(li);
@@ -51,7 +54,8 @@ function render() {
 
   // TODO 3: count the todos that are NOT done and show "2 left"
   //         Hint: todos.filter(t => ...).length
-
+  const notDone = todos.filter(t => !t.done).length;
+  remainingEl.textContent = `${notDone} left`;
 }
 
 
@@ -67,6 +71,14 @@ form.addEventListener("submit", (event) => {
   // todos.push({ id: nextId, text: text, done: false });
   // nextId++;
   // clear the input, then render()
+
+  const text = input.value.trim();
+  if (text === "") return;
+
+  todos.push({ id: nextId, text: text, done: false });
+  nextId++;
+  input.value = "";
+  render();
 
 });
 
@@ -85,12 +97,23 @@ list.addEventListener("click", (event) => {
   //
   // then render()
 
+  if (event.target.type === "checkbox") {
+    const todo = todos.find(t => t.id === id);
+    todo.done = !todo.done;
+  } else if (event.target.classList.contains("delete")) {
+    todos = todos.filter(t => t.id !== id);
+  }
+
+  render();
+
 });
 
 
 // TODO 6: "Clear completed" keeps only the todos that are NOT done
 //         todos = todos.filter(...)   then render()
-
-
+clearBtn.addEventListener("click", () => {
+todos = todos.filter((t) => !t.done);
+render();
+});
 
 render(); // draw the starting list

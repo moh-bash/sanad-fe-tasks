@@ -1,0 +1,25 @@
+.box{
+    background-color: #3c3a3a;
+    margin: 20px 0;
+    padding:10px 30px;
+    border-radius: 20px;
+    transition: all 0.3s ease-in-out;
+}
+
+.accordion{
+    margin-top: 40px;
+}
+
+.hidden{
+    display: none;
+}
+
+.details{
+    color: #fff;
+    font-size: 20px;
+    line-height: 1.5;
+    margin-top: 10px;
+    border-top: 1px solid #4747c7;
+    padding-top: 10px;
+}
+
