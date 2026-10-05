@@ -16,26 +16,40 @@ const messageEl = document.querySelector("#message");
 // TODO 1: make the page show the current count
 function render() {
   // countEl.textContent = ...
+  countEl.textContent = count;
 
   // TODO 5: minusBtn.disabled = (true when count is 0)
+  minusBtn.disabled = (count === 0);
 
   // TODO 6: if count >= 10 → message "That's a lot of clicks!" + add class "high" to countEl
   //         otherwise       → message "" + remove class "high"
   //         (Bonus: countEl.classList.toggle("high", count >= 10) does it in one line)
+  const isHigh = count >= 10
+    messageEl.textContent = isHigh? "That's a lot of clicks!": "";
+    countEl.classList.toggle("high", isHigh)
 }
 
 
 // TODO 2: when plus is clicked → count goes up by 1, then render()
-// plusBtn.addEventListener("click", () => {
-//
-// });
+plusBtn.addEventListener("click", () => {
+  count++;
+  render();
+});
 
 
 // TODO 3: minus → count goes down by 1, but NOT below 0. Then render()
-
+minusBtn.addEventListener("click", () => {
+  if (count > 0) {
+    count--;
+    render();
+  }
+})
 
 // TODO 4: reset → count = 0, then render()
-
+resetBtn.addEventListener("click", () => {
+  count = 0
+  render();
+})
 
 // Draw the page once at the start, so it's right before any click.
 render();
