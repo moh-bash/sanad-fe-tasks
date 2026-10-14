@@ -4,7 +4,7 @@ import { useState } from "react";
 
 
 function Card({ task  }) {
-    const {removeTodo, toggleTodo, idTask} = useTodo((state) => state);
+    const {removeTodo, toggleTodo, setIdTask} = useTodo((state) => state);
 
     return (
         <div className="flex items-center justify-between mb-3 border border-gray-300 p-4 rounded-2xl">
@@ -16,7 +16,7 @@ function Card({ task  }) {
             <div className="flex items-center gap-2">
                 <button 
                 className="hover:bg-blue-100 p-2 rounded-full cursor-pointer"
-                 onClick={() => idTask(task.id)}>
+                 onClick={() => setIdTask(task.id)}>
                     <SquarePen className="text-blue-500" />
                 </button>
 
