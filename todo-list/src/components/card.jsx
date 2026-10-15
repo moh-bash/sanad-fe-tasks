@@ -7,10 +7,10 @@ function Card({ task  }) {
     const {removeTodo, toggleTodo, setIdTask} = useTodo((state) => state);
 
     return (
-        <div className="flex items-center justify-between mb-3 border border-gray-300 p-4 rounded-2xl">
+        <div className={`flex items-center justify-between mb-3 border border-gray-300 p-4 rounded-2xl ${task.completed ? "bg-gray-100 border-green-300" : "bg-white border-gray-300"}`}>
             <div className="flex flex-col me-3 w-full">
-                <h3 className="font-bold line-clap1">{task.title}</h3>
-                <p className="line-clamp-2 max-w-full">{task.description}</p>
+                <h3 className={`font-bold line-clap1 ${task.completed ? "line-through text-gray-400":""}`}>{task.title}</h3>
+                <p className={`line-clamp-2 max-w-full ${task.completed ? "text-gray-400":""}`}>{task.description}</p>
             </div>
 
             <div className="flex items-center gap-2">
